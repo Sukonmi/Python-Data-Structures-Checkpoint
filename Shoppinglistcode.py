@@ -62,6 +62,12 @@ while True:
         if selected_item in shopping_list:
             shopping_list.remove(selected_item)
         if selected_item in unique_items:
-            unique_items.pop(selected_item)
+            unique_items.remove(selected_item)
+        if selected_item in item_info[item]:
+            item_info.pop(selected_item)
         else:
             print("Selected items are not present in your cart")
+
+# If the user selects 'view', use a for loop to iterate through the list of items and display them to the user.
+    elif user_selection == 3:
+        print
