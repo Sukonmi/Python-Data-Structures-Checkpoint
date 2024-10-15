@@ -43,27 +43,25 @@ while True:
             if item in our_store_items:
                 if item in unique_items:
                     print("Item already exist. \nSelect another item: ")
-                    i - 1
-                elif item not in unique_items:
+                else:
                     item_quantity = int(input(f"How many {item}s do you want? "))
                     shopping_list.append(item)
                     unique_items.add(item)
                     item_info[item] = item_quantity
                     item_info[f"{item}_price"] = our_store_items[item] * item_quantity
                     print(f"Your {item}(s) have been added to your cart")
-                    i += 1
             else:
                 print("Sorry we do not have this currently.")
 
 # If the user selects 'remove', use the input() function to prompt the user to enter an item to remove from the list.
     elif user_selection == 2:
         print("Proceed to removing items from your cart")
-        for removables in item:
+        for removables in shopping_list:
             print(removables)
-            selected_item = input("What item(s) do you want to remove: \n")
-            if selected_item in shopping_list:
-                shopping_list.remove(selected_item)
-                if selected_item in unique_items:
-                    unique_items.pop(selected_item)
-            else:
-                print("Selected items are not present in your cart")
+        selected_item = input("What item(s) do you want to remove: \n")
+        if selected_item in shopping_list:
+            shopping_list.remove(selected_item)
+        if selected_item in unique_items:
+            unique_items.pop(selected_item)
+        else:
+            print("Selected items are not present in your cart")
