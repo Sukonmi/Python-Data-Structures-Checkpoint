@@ -58,16 +58,24 @@ while True:
         print("Proceed to removing items from your cart")
         for removables in shopping_list:
             print(removables)
-        selected_item = input("What item(s) do you want to remove: \n")
+        selected_item = input("What item(s) do you want to remove: \n").capitalize()
         if selected_item in shopping_list:
             shopping_list.remove(selected_item)
-        if selected_item in unique_items:
             unique_items.remove(selected_item)
-        if selected_item in item_info[item]:
-            item_info.pop(selected_item)
+            item_info.pop(selected_item, None)
+            print(f"Your {selected_item}(s) have been removed from your cart")
         else:
             print("Selected items are not present in your cart")
 
 # If the user selects 'view', use a for loop to iterate through the list of items and display them to the user.
     elif user_selection == 3:
-        print
+        print("Displaying your shopping list below")
+        if len(shopping_list) > 0:
+            for item in shopping_list:
+                print(f"{item} with a quantity of {item_info[item]} and a price of {item_info[f"{item}_price"]} Naira")
+        else:
+            print("Your shopping cart is empty")
+
+    elif user_selection == 4:
+        print("Thank you for shopping with us \nWe look forward to having you again in the nearest future.")
+        break
